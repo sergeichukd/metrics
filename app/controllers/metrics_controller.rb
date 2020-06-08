@@ -1,6 +1,5 @@
 class MetricsController < ApplicationController
   # before_action :set_metric, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
 
   # GET /metrics
   # GET /metrics.json

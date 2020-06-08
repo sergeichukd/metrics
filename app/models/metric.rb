@@ -23,8 +23,8 @@ class MetricValidator < ActiveModel::Validator
         if (record.hot < 0) || (record.cold < 0)
             record.errors[:value] << "Вводимые значения должны быть больше нуля"
         end
-        
     end
+
 end
 
 
@@ -33,4 +33,9 @@ class Metric < ApplicationRecord
     belongs_to :user
     
     validates_with MetricValidator
+
+    def name
+        "#{created_at.month}-#{created_at.year},  hot: #{hot},  cold: #{cold}"
+    end
+
 end

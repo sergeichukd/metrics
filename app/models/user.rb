@@ -8,4 +8,9 @@ class User < ApplicationRecord
          :validatable
 
   has_many :metrics, dependent: :destroy
+
+  def name
+    "#{last_name} #{first_name}"
+  end
+
 end
