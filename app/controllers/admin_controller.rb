@@ -1,4 +1,6 @@
 class AdminController < ApplicationController
+  before_action :ensure_admin_user!
+
   def index
     @users = User.all
   end
@@ -63,11 +65,14 @@ class AdminController < ApplicationController
   end
 
 
+  def ensure_admin_user!
+    unless current_user && current_user.is_admin
+      redirect_to root_path
+    end
+  end
+
   private
     def new_user_params
-      puts "!!!!!!!!!!!"
-      puts params[:dimka_field]
-      puts "!!!!!!!!!!!"
       params.require(:user).permit(:email, :first_name, :last_name, :is_admin, :login, :address)
     end
 
