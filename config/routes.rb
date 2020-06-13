@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
-  # get 'admin/index'
-  # devise_for :admins
-  devise_for :users
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
+
   resources :metrics
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  get 'users/profile'
+
+  get 'users/new_password', to: 'users#new_password', as: 'new_password'
+  patch 'users/update_password', to: 'users#update_password', as: 'update_password'
 
   scope '/admin' do
     get '', to: 'admin#index', as: 'index'
