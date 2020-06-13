@@ -1,0 +1,28 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Interface</h1>
+
+<div><%= link_to 'Статистика потребления воды', show_statistics_path %></div>
+<div><%= link_to 'Добавить нового пользователя', new_user_path %></div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= link_to 'Show', user_detail_path(user) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

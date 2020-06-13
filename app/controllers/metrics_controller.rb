@@ -41,17 +41,17 @@ class MetricsController < ApplicationController
 
   # PATCH/PUT /metrics/1
   # PATCH/PUT /metrics/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @metric.update(metric_params)
-  #       format.html { redirect_to @metric, notice: 'Metric was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @metric }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @metric.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
+  def update
+    respond_to do |format|
+      if @metric.update(metric_params)
+        format.html { redirect_to @metric, notice: 'Metric was successfully updated.' }
+        format.json { render :show, status: :ok, location: @metric }
+      else
+        format.html { render :edit }
+        format.json { render json: @metric.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /metrics/1
   # DELETE /metrics/1.json

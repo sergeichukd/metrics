@@ -13,11 +13,13 @@
 # admin.save!
 
 user = User.new
-user.email = "user@mail.com"
+user.email = "user5@mail.com"
 user.password = '123456'
 user.password_confirmation = '123456'
-user.first_name = "Dimka"
-user.last_name = "Sergeichuk"
-user.login = "dimkas"
-user.address = "Zelenograd"
+user.first_name = "first_name5"
+user.last_name = "last_name5"
+user.login = "login5"
+user.address = "address5"
 user.save!
+
+metric = Metric.new

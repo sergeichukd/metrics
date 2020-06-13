@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Потребление горячей воды</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>First Name</th>
+      <th>Second Name</th>
+      <th>Max Hot</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users_sorted_3_greater_hot.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.first_name %></td>
+        <td><%= user.last_name %></td>
+        <td><%= user.max_hot %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
