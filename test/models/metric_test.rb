@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class MetricTest < ActiveSupport::TestCase
-  # test "the truth" do
+  # test "assert true" do
   #   assert true
   # end
 end

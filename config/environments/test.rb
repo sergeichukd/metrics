@@ -2,9 +2,12 @@
 # test suite. You never need to work with it otherwise. Remember that
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
+require 'faker'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+
+  Faker::Config.locale = 'ru'
 
   config.cache_classes = false
   config.action_view.cache_template_loading = true

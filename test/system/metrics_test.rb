@@ -1,45 +1,32 @@
 require "application_system_test_case"
 
 class MetricsTest < ApplicationSystemTestCase
-  setup do
-    @metric = metrics(:one)
+  test "visiting root and seeing login page if not login" do
+    visit root_path
+  
+    assert_selector "h2", text: "Log in"
   end
 
-  test "visiting the index" do
-    visit metrics_url
-    assert_selector "h1", text: "Metrics"
-  end
+  test "can login if credentials are right" do
+    email = 'test@email.com'
+    password = 'FirstLast'
+    
+    user = User.create(email: email,
+      password: password,
+      password_confirmation: password,
+      first_name: 'First',
+      last_name: 'Last',
+      login: 'test',
+      address: '282 Kevin Brook, Imogeneborough, CA 58517')
 
-  test "creating a Metric" do
-    visit metrics_url
-    click_on "New Metric"
+    visit root_path
+    assert_selector "h2", text: "Log in"
 
-    fill_in "Cold", with: @metric.cold
-    fill_in "Hot", with: @metric.hot
-    click_on "Create Metric"
+    fill_in "Email", with: email
+    fill_in "Password", with: password
 
-    assert_text "Metric was successfully created"
-    click_on "Back"
-  end
+    click_on "Log in"
 
-  test "updating a Metric" do
-    visit metrics_url
-    click_on "Edit", match: :first
-
-    fill_in "Cold", with: @metric.cold
-    fill_in "Hot", with: @metric.hot
-    click_on "Update Metric"
-
-    assert_text "Metric was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a Metric" do
-    visit metrics_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    assert_text "Metric was successfully destroyed"
+    assert_text "Metrics"
   end
 end
