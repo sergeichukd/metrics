@@ -31,13 +31,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # For user auth
 gem 'devise'
 
-# For admin interface
-# gem 'rails_admin'
-gem 'rails_admin', git: 'https://github.com/sferik/rails_admin.git'
-
-# CanCanCan gem to restrict access to some parts of the app
-gem 'cancancan'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
