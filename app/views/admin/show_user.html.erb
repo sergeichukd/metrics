@@ -18,6 +18,7 @@
         <td><%= "#{metric.created_at.month}-#{metric.created_at.year}" %></td>
         <td><%= metric.cold %></td>
         <td><%= metric.hot %></td>
+        <td><%= link_to 'Edit', show_metric_path(metric) %></td>
       </tr>
     <% end %>
   </tbody>

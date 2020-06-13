@@ -32,5 +32,5 @@ end
 class Metric < ApplicationRecord
     belongs_to :user
     
-    validates_with MetricValidator
+    validates_with MetricValidator, on: :create
 end
