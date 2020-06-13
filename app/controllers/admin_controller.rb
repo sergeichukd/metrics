@@ -5,7 +5,7 @@ class AdminController < ApplicationController
     @users = User.all
   end
 
-  def show
+  def show_user
     @user = User.find(params[:id])
     @metrics = Metric.where("user_id = '#{@user.id}'")
   end
@@ -27,19 +27,18 @@ class AdminController < ApplicationController
     @users_sorted_3_greater_hot = users_max_hot_sorted_reversed.slice(0..2)
   end
 
-  def edit
+  def show_metric
     @metric = Metric.find(params[:id])
   end
 
 
-  def update
+  def update_metric
+    @metric = Metric.find(params[:id])
     respond_to do |format|
       if @metric.update(metric_params)
-        format.html { redirect_to @metric, notice: 'Metric was successfully updated.' }
-        format.json { render :show, status: :ok, location: @metric }
+        format.html { redirect_to show_user_path(@metric.user), notice: 'Metric was successfully updated.' }
       else
-        format.html { render :edit }
-        format.json { render json: @metric.errors, status: :unprocessable_entity }
+        format.html { render :show_metric }
       end
     end
   end  
@@ -76,6 +75,10 @@ class AdminController < ApplicationController
   private
     def new_user_params
       params.require(:user).permit(:email, :first_name, :last_name, :is_admin, :login, :address)
+    end
+
+    def metric_params
+      params.require(:metric).permit(:cold, :hot)
     end
 
 end
