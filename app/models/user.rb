@@ -18,7 +18,8 @@ class User < ApplicationRecord
         #  :registerable,
         #  :recoverable, 
          :rememberable, 
-         :validatable
+         :validatable,
+         authentication_keys: [:login]
 
   has_many :metrics, dependent: :destroy
 
