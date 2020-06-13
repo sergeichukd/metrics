@@ -15,14 +15,16 @@ class AdminController < ApplicationController
 
   def show_cold_statistics
     @users = User.all
-    @users_max_cold_sorted_reversed = @users.sort_by{|user| -user.max_cold}
-    @users_sorted_3_greater_cold = @users_max_cold_sorted_reversed.slice(0..2)
+    users_cold_not_nil = @users.select(&:max_cold)
+    users_max_cold_sorted_reversed = users_cold_not_nil.sort_by{|user| -user.max_cold}
+    @users_sorted_3_greater_cold = users_max_cold_sorted_reversed.slice(0..2)
   end
 
   def show_hot_statistics
     @users = User.all
-    @users_max_hot_sorted_reversed = @users.sort_by{|user| -user.max_hot}
-    @users_sorted_3_greater_hot = @users_max_hot_sorted_reversed.slice(0..2)
+    users_hot_not_nil = @users.select(&:max_hot)
+    users_max_hot_sorted_reversed = users_hot_not_nil.sort_by{|user| -user.max_hot}
+    @users_sorted_3_greater_hot = users_max_hot_sorted_reversed.slice(0..2)
   end
 
   def edit
