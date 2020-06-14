@@ -1,14 +1,6 @@
-class UserValidator < ActiveModel::Validator
-end
-
-
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, 
-        #  :registerable,
-        #  :recoverable, 
-         :rememberable, 
+  devise :database_authenticatable,
+         :rememberable,
          :validatable,
          authentication_keys: [:login]
 
@@ -18,11 +10,11 @@ class User < ApplicationRecord
   validates :login, :email, :first_name, :last_name, :address, presence: true
 
   def max_cold
-    Metric.where("user_id = #{self.id}").maximum("cold")
+    Metric.where(user_id: self.id).maximum(:cold)
   end
 
   def max_hot
-    Metric.where("user_id = #{self.id}").maximum("hot")
+    Metric.where(user_id: self.id).maximum(:hot)
   end
 
   def set_password(password)
@@ -33,5 +25,4 @@ class User < ApplicationRecord
   def make_default_password(user_params)
     user_params[:first_name] << user_params[:last_name]
   end
-
 end
