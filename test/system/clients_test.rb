@@ -98,7 +98,7 @@ class ClientsTest < ApplicationSystemTestCase
     # Make first metric in a month
     fill_in "Cold", with: 3
     fill_in "Hot", with: 2
-    click_on "Submit"
+    click_on "Create Metric"
 
     assert_text "Metric was successfully created."
     assert_selector "h1", text: "Metrics"
@@ -109,7 +109,7 @@ class ClientsTest < ApplicationSystemTestCase
 
     fill_in "Cold", with: 4
     fill_in "Hot", with: 3
-    click_on "Submit"
+    click_on "Create Metric"
     assert_selector "h1", text: "New Metric"
     assert_text "Вы уже имеете актуальные показания на этот месяц"
     take_failed_screenshot
