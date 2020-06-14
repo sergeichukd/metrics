@@ -1,7 +1,7 @@
 <%= form_with(model: metric, local: true, url: update_metric_path) do |form| %>
   <% if metric.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(metric.errors.count, "error") %> prohibited this metric from being saved:</h2>
+    <div id="error_explanation" class="alert alert-warning" role="alert">
+      <p><%= pluralize(metric.errors.count, "error") %> occured:</p>
 
       <ul>
         <% metric.errors.full_messages.each do |message| %>
@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :cold %>
+  <div class="form-group field">
+    <%= form.label :cold %><br />
     <%= form.number_field :cold %>
   </div>
 
-  <div class="field">
-    <%= form.label :hot %>
+  <div class="form-group field">
+    <%= form.label :hot %><br />
     <%= form.number_field :hot %>
   </div>
 
-  <div class="actions">
+  <div class="actions mb-4">
     <%= form.submit %>
   </div>
 <% end %>

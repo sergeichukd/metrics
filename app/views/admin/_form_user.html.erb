@@ -1,7 +1,7 @@
 <%= form_with(model: user, local: true, url: create_user_path) do |form| %>
   <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div id="error_explanation" class="alert alert-warning" role="alert">
+      <p><%= pluralize(user.errors.count, "error") %> occured:</p>
 
       <ul>
         <% user.errors.full_messages.each do |message| %>
@@ -11,34 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :email %>
+  <div class="form-group field">
+    <%= form.label :email %><br />
     <%= form.email_field :email %>
   </div>
 
-  <div class="field">
-    <%= form.label :first_name %>
+  <div class="form-group field">
+    <%= form.label :first_name %><br />
     <%= form.text_field :first_name %>
   </div>
 
-  <div class="field">
-    <%= form.label :last_name %>
+  <div class="form-group field">
+    <%= form.label :last_name %><br />
     <%= form.text_field :last_name %>
   </div>
 
-  <div class="field">
-    <%= form.label :is_admin %>
-    <%= form.check_box :is_admin %>
-  </div>
-
-  <div class="field">
-    <%= form.label :login %>
+  <div class="form-group field">
+    <%= form.label :login %><br />
     <%= form.text_field :login %>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
+  <div class="form-group field">
+    <%= form.label :address %><br />
     <%= form.text_field :address %>
+  </div>
+
+  <div class="form-group field">
+    <%= form.check_box :is_admin %>
+    <%= form.label :is_admin %>
   </div>
 
   <div class="actions">

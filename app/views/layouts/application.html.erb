@@ -5,21 +5,29 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'%>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto font-weight-bold">Metrics</h5>
+      <nav>
+        <% if user_signed_in? %>
+          <span class="navbar-text">Hello <%= current_user.login %></span>
+          <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'btn btn-outline-primary' %>
+        <% else %>
+          <%= link_to 'Sign in', new_user_session_path, class: 'btn btn-outline-primary' %>
+        <% end %>
+      </nav>
+    </div>
 
-    <% if user_signed_in? %>
-        <span>Здравствуйте, <%= current_user.email %></span>
-        <%= link_to 'Выйти', destroy_user_session_path, :method => :delete %>
-    <% else %>
-        <%= link_to 'Войти', new_user_session_path %>
-    <% end %>
-
-    <%= yield %>
+    <div class='container'>
+      <p class="alert alert-light notice"><%= notice %></p>
+      <p class="alert alert-light alert"><%= alert %></p>
+      <%= yield %>
+    </div>
   </body>
 </html>
