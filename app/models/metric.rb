@@ -32,5 +32,7 @@ end
 class Metric < ApplicationRecord
     belongs_to :user
     
+    default_scope {order("created_at DESC")}
+
     validates_with MetricValidator, on: :create
 end

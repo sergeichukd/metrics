@@ -25,3 +25,9 @@
 # user.save!
 
 # metric = Metric.new
+
+# user password: 3080355724
+
+# update metrics set created_at = '2020-04-14 21:21:11.775238'
+
+# insert into metrics (cold, hot, created_at, updated_at, user_id) values (202, 200, '2020-06-14 21:21:11.775238', '2020-06-14 21:21:11.775238', 3)
