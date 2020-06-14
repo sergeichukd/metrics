@@ -1,11 +1,11 @@
-<p id="notice"><%= notice %></p>
+<h1 class='mb-1'>Admin Interface</h1>
 
-<h1>Admin Interface</h1>
 
-<div><%= link_to 'Статистика потребления воды', show_statistics_path %></div>
-<div><%= link_to 'Добавить нового пользователя', new_user_path %></div>
+<%= link_to 'Статистика потребления воды', show_statistics_path, class: 'btn btn-primary mb-4' %>
+<%= link_to 'Добавить нового пользователя', new_user_path, class: 'btn btn-primary mb-4' %>
+<h2>Users</h2>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Id</th>
@@ -15,13 +15,13 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody> 
     <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <td><%= link_to 'Show', user_detail_path(user) %></td>
+        <td><%= link_to 'Show', show_user_path(user) %></td>
       </tr>
     <% end %>
   </tbody>

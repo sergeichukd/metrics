@@ -1,4 +1,4 @@
-<%= form_with(model: metric, local: true) do |form| %>
+<%= form_with(model: metric, local: true, url: update_metric_path) do |form| %>
   <% if metric.errors.any? %>
     <div id="error_explanation" class="alert alert-warning" role="alert">
       <p><%= pluralize(metric.errors.count, "error") %> occured:</p>
@@ -21,7 +21,7 @@
     <%= form.number_field :hot %>
   </div>
 
-  <div>
-    <%= form.submit 'Submit' %>
+  <div class="actions mb-4">
+    <%= form.submit %>
   </div>
 <% end %>

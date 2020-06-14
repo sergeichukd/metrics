@@ -1,5 +1,6 @@
 class MetricsController < ApplicationController
   # before_action :set_metric, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /metrics
   # GET /metrics.json
@@ -29,7 +30,7 @@ class MetricsController < ApplicationController
 
     respond_to do |format|
       if @metric.save
-        format.html { redirect_to @metric, notice: 'Metric was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Metric was successfully created.' }
         format.json { render :show, status: :created, location: @metric }
       else
         format.html { render :new }
