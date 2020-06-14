@@ -1,24 +1,16 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+## Metrcs
+### App for water metric accounting
 
 * Ruby version
-
+    ruby 2.7.1p83
 * System dependencies
-
-* Configuration
-
+    `bundle install`
+    `yarn install --check-files`
 * Database creation
-
+    `rails db:create`
 * Database initialization
-
+    `rails db:migrate`
 * How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+    `rails test:system`

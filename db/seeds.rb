@@ -12,14 +12,22 @@
 # admin.password_confirmation = '123456'
 # admin.save!
 
-user = User.new
-user.email = "user5@mail.com"
-user.password = '123456'
-user.password_confirmation = '123456'
-user.first_name = "first_name5"
-user.last_name = "last_name5"
-user.login = "login5"
-user.address = "address5"
-user.save!
+# user = User.new
+# user.email = "admin@mail.com"
+# user.password = '123456'
+# user.password_confirmation = '123456'
+# user.first_name = "first_name_admin"
+# user.last_name = "last_name_admin"
+# user.login = "admin"
+# user.address = "address_admin"
+# user.has_default_password = false
+# user.is_admin = true
+# user.save!
 
-metric = Metric.new
+# metric = Metric.new
+
+# user password: 3080355724
+
+# update metrics set created_at = '2020-04-14 21:21:11.775238'
+
+# insert into metrics (cold, hot, created_at, updated_at, user_id) values (202, 200, '2020-06-14 21:21:11.775238', '2020-06-14 21:21:11.775238', 3)
