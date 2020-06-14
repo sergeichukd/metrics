@@ -25,4 +25,13 @@ class User < ApplicationRecord
     Metric.where("user_id = #{self.id}").maximum("hot")
   end
 
+  def set_password(password)
+    self.password = password
+    self.password_confirmation = password
+  end
+
+  def make_default_password(user_params)
+    user_params[:first_name] << user_params[:last_name]
+  end
+
 end
