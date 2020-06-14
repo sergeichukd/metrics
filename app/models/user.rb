@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :metrics, dependent: :destroy
 
   validates :login, uniqueness: true, on: :create
+  validates :login, :email, :first_name, :last_name, :address, presence: true
 
   def max_cold
     Metric.where("user_id = #{self.id}").maximum("cold")
