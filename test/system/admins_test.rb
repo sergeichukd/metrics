@@ -118,10 +118,10 @@ class AdminsTest < ApplicationSystemTestCase
     click_on "Log in"
     assert_selector "h1", text: "Admin Interface"
 
-    click_on "Статистика потребления воды"
+    click_on "Consumption statistics"
     assert_selector "h1", text: "Statistics"
 
-    click_on "Статистика потребления холодной воды"
+    click_on "Cold water consumption"
 
     assert_selector "tbody > tr:nth-child(1) > td:nth-child(1)" 
     user_cold_1 = User.select(:id).where(login: "login_user#{counter - 1}").take
@@ -133,7 +133,7 @@ class AdminsTest < ApplicationSystemTestCase
     assert_selector "tbody > tr:nth-child(3) > td:nth-child(1)", text: user_cold_3.id
 
     visit show_statistics_path
-    click_on "Статистика потребления горячей воды"
+    click_on "Hot water consumption"
     user_hot_1 = User.select(:id).where(login: "login_user#{0}").take
     user_hot_2 = User.select(:id).where(login: "login_user#{1}").take
     user_hot_3 = User.select(:id).where(login: "login_user#{2}").take
