@@ -11,12 +11,12 @@
   </thead>
 
   <tbody>
-    <% @users_sorted_3_greater_hot.each do |user| %>
+    <% @top_3_max_hot_consumers.each do |user| %>
       <tr>
         <td><%= user.id %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <td><%= user.max_hot %></td>
+        <td><%= user.maximum %></td>
       </tr>
     <% end %>
   </tbody>
