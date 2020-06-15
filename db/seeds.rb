@@ -14,12 +14,12 @@
 
 # user = User.new
 # user.email = "admin@mail.com"
-# user.password = '123456'
-# user.password_confirmation = '123456'
-# user.first_name = "first_name_admin"
-# user.last_name = "last_name_admin"
+# user.password = 'supermishka99'
+# user.password_confirmation = 'supermishka99'
+# user.first_name = "admin_first_name"
+# user.last_name = "admin_last_name"
 # user.login = "admin"
-# user.address = "address_admin"
+# user.address = "admin's address"
 # user.has_default_password = false
 # user.is_admin = true
 # user.save!
