@@ -33,8 +33,8 @@ class ClientsTest < ApplicationSystemTestCase
     click_on "Log in"
     assert_selector "h1", text: "Admin Interface"
 
-    click_on "Добавить нового пользователя"
-    assert_selector "h1", text: "Новый пользователь"
+    click_on "Add new user"
+    assert_selector "h1", text: "New user"
 
     first_name_user = Faker::Name.first_name
     last_name_user = Faker::Name.last_name
@@ -59,7 +59,7 @@ class ClientsTest < ApplicationSystemTestCase
     fill_in "Password", with: "#{first_name_user}#{last_name_user}"
     click_on "Log in"
 
-    assert_selector "h1", text: "Создайте новый пароль"
+    assert_selector "h1", text: "Change your password"
 
     fill_in "Password", with: "123456789"
     fill_in "Password confirmation", with: "123456789"
@@ -111,7 +111,7 @@ class ClientsTest < ApplicationSystemTestCase
     fill_in "Hot", with: 3
     click_on "Create Metric"
     assert_selector "h1", text: "New Metric"
-    assert_text "Вы уже имеете актуальные показания на этот месяц"
+    assert_text "You've already have actual records for current month"
     take_failed_screenshot
   end
 end
