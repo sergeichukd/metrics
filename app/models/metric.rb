@@ -6,16 +6,16 @@ class MetricValidator < ActiveModel::Validator
     end
 
     if actual_metric?
-      record.errors[:date] << 'Вы уже имеете актуальные показания на этот месяц'
+      record.errors[:date] << "You've already have actual records for current month"
       return
     end
 
     if metric_decreased? record
-      record.errors[:value] << "Введенные показания меньше последних: горячая: #{@last_record.hot}, холодная: #{@last_record.cold}"
+      record.errors[:value] << "Current metrics is less then the last record; hot: #{@last_record.hot}, cold: #{@last_record.cold}"
     end
 
     if metric_negative? record
-      record.errors[:value] << 'Вводимые значения должны быть больше нуля'
+      record.errors[:value] << "Metrics mustn't be negative"
     end
   end
 
