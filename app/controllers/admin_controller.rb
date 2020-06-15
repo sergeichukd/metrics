@@ -35,17 +35,11 @@ class AdminController < ApplicationController
   end
 
   def show_cold_statistics
-    @users = User.all
-    users_cold_not_nil = @users.select(&:max_cold)
-    users_max_cold_sorted_reversed = users_cold_not_nil.sort_by{ |user| -user.max_cold }
-    @users_sorted_3_greater_cold = users_max_cold_sorted_reversed.slice(0..2)
+    @top_3_max_cold_consumers = get_max_3_water_cunsumers :cold
   end
 
   def show_hot_statistics
-    @users = User.all
-    users_hot_not_nil = @users.select(&:max_hot)
-    users_max_hot_sorted_reversed = users_hot_not_nil.sort_by{|user| -user.max_hot}
-    @users_sorted_3_greater_hot = users_max_hot_sorted_reversed.slice(0..2)
+    @top_3_max_hot_consumers = get_max_3_water_cunsumers :hot
   end
 
   # Metric block
@@ -78,5 +72,13 @@ class AdminController < ApplicationController
 
   def metric_params
     params.require(:metric).permit(:cold, :hot)
+  end
+
+  def get_max_3_water_cunsumers(water_type)
+    User.joins(:metrics)
+        .select("users.*, max(metrics.#{water_type}) as maximum")
+        .group('users.id')
+        .order(maximum: :desc)
+        .limit(3)
   end
 end
