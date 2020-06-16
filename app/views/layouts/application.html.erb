@@ -25,11 +25,15 @@
     </div>
 
     <div class='container'>
-      <p class="alert alert-light notice"><%= notice %></p>
-      <p class="alert alert-light alert"><%= alert %></p>
-      <div class='container'>
+      <div class="alert alert-light">
+        <%= notice %>
+        <br />
+        <%= alert %>
+      </div>
+      <div>
         <%= yield %>
       </div>
     </div>
+    
   </body>
 </html>
