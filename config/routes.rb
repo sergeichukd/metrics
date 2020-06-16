@@ -1,25 +1,26 @@
 Rails.application.routes.draw do
-
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
 
-
-  resources :metrics
-
   get 'users/new_password', to: 'users#new_password', as: 'new_password'
   patch 'users/update_password', to: 'users#update_password', as: 'update_password'
 
-  scope '/admin' do
-    get '', to: 'admin#index', as: 'index'
-    get 'users/new', to: 'admin#new_user', as: 'new_user'
-    post 'users', to: 'admin#create_user', as: 'create_user'
-    get 'users/:id', to: 'admin#show_user', as: 'show_user'
-    get 'metrics/:id', to: 'admin#show_metric', as: 'show_metric'
-    patch 'metrics/:id/update', to: 'admin#update_metric', as: 'update_metric'
-    get 'statistics', to: 'admin#show_statistics', as: 'show_statistics'
-    get 'statistics/cold', to: 'admin#show_cold_statistics', as: 'show_cold_statistics'
-    get 'statistics/hot', to: 'admin#show_hot_statistics', as: 'show_hot_statistics'
+  resources :metrics
+
+  scope module: 'admin', path: 'admin' do
+    get '', to: 'users#index', as: 'index'
+
+    get 'metrics/edit/:id', to: 'metrics#edit', as: 'show_metric'
+    patch 'metrics/edit/:id/update', to: 'metrics#update', as: 'update_metric'
+
+    get 'statistics', to: 'statistics#index', as: 'show_statistics'
+    get 'statistics/cold', to: 'statistics#cold', as: 'show_cold_statistics'
+    get 'statistics/hot', to: 'statistics#hot', as: 'show_hot_statistics'
+
+    get 'users/new', to: 'users#new', as: 'new_user'
+    post 'users/create', to: 'users#create', as: 'create_user'
+    get 'users/:id', to: 'users#show', as: 'show_user'
   end
 
   root 'metrics#index'
