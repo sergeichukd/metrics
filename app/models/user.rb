@@ -15,6 +15,6 @@ class User < ApplicationRecord
   end
 
   def make_default_password(user_params)
-    user_params[:first_name] << user_params[:last_name]
+    "#{user_params[:first_name]}#{user_params[:last_name]}"
   end
 end
