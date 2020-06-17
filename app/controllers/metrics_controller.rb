@@ -14,7 +14,7 @@ class MetricsController < ApplicationController
     @metric.user_id = current_user.id
 
     respond_to do |format|
-      if @metric.save
+      if @metric.save(context: :client_context)
         format.html { redirect_to root_path, notice: 'Metric was successfully created.' }
       else
         format.html { render :new }
