@@ -1,13 +1,27 @@
 <%= form_for(@user, :url => { :action => "update_password" } ) do |f| %>
-  <div class="form-group field">
-    <%= f.label :password, "Password" %><br />
-    <%= f.password_field :password, :autocomplete => "off"  %>
-  </div>
-  <div class="form-group field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="action_container">
-    <%= f.submit class: 'btn btn-primary' %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="alert alert-warning" role="alert">
+      <p><%= pluralize(@user.errors.count, "error") %> occured:</p>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="w-25">
+    <div class="form-group field">
+      <%= f.label :password, "Password" %><br />
+      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+    </div>
+    <div class="form-group field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, class: "form-control"  %>
+    </div>
+    <div class="action_container">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
   </div>
 <% end %>
