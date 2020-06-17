@@ -9,7 +9,7 @@ class Admin::MetricsController < ApplicationController
       if @metric.update(metric_params)
         format.html { redirect_to show_user_path(@metric.user), notice: 'Metric was successfully updated.' }
       else
-        format.html { render :show_metric }
+        format.html { render :edit }
       end
     end
   end
