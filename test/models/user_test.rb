@@ -13,7 +13,7 @@ class UserTest < ActiveSupport::TestCase
       user.address = Faker::Address.full_address
 
       assert user.save
-    end  
+    end
   end
 
   test "should not save user if login is already taken" do

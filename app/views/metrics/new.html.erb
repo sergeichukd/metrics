@@ -1,5 +1,7 @@
 <h1>New Metric</h1>
 
-<%= render 'form', metric: @metric %>
+<%= form_with(model: @metric, local: true) do |form| %>
+    <%= render partial: 'shared/metric_form', locals: {form: form}%>
+<% end %>
 
 <%= link_to 'Back', metrics_path, class: 'btn btn-secondary mt-4' %>
