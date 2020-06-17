@@ -1,17 +1,8 @@
 class MetricValidator < ActiveModel::Validator
   def validate(record)
-    @last_record = Metric.where(user_id: record.user_id).first
-    if @last_record.nil?
+    if metric_nil? record
+      record.errors[:value] << 'You have empty field(s)'
       return
-    end
-
-    if actual_metric?
-      record.errors[:date] << "You've already have actual records for current month"
-      return
-    end
-
-    if metric_decreased? record
-      record.errors[:value] << "Current metrics is less then the last record; hot: #{@last_record.hot}, cold: #{@last_record.cold}"
     end
 
     if metric_negative? record
@@ -21,7 +12,35 @@ class MetricValidator < ActiveModel::Validator
 
   private
 
-  def actual_metric?
+  def metric_negative?(record)
+    record.hot.negative? || record.cold.negative?
+  end
+
+  def metric_nil?(record)
+    !(record.hot && record.cold)
+  end
+end
+
+class MetricClientValidator < ActiveModel::Validator
+  def validate(record)
+    @last_record = Metric.where(user_id: record.user_id).first
+    if @last_record.nil?
+      return
+    end
+
+    if not_actual_metric?
+      record.errors[:date] << "You've already have actual records for current month"
+      return
+    end
+
+    if metric_decreased?(record)
+      record.errors[:value] << "Current metrics is less then the last record; hot: #{@last_record.hot}, cold: #{@last_record.cold}"
+    end
+  end
+
+  private
+
+  def not_actual_metric?
     current_year = Date.today.year
     current_month = Date.today.month
 
@@ -34,10 +53,6 @@ class MetricValidator < ActiveModel::Validator
   def metric_decreased?(record)
     (record.hot < @last_record.hot) || (record.cold < @last_record.cold)
   end
-
-  def metric_negative?(record)
-    record.hot.negative? || record.cold.negative?
-  end
 end
 
 class Metric < ApplicationRecord
@@ -45,6 +60,6 @@ class Metric < ApplicationRecord
 
   default_scope { order('created_at DESC') }
 
-  validates :cold, :hot, presence: true
-  validates_with MetricValidator, on: :create
+  validates_with MetricValidator
+  validates_with MetricClientValidator, on: :client_context
 end
