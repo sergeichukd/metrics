@@ -63,7 +63,7 @@ class ClientsTest < ApplicationSystemTestCase
 
     fill_in "Password", with: "123456789"
     fill_in "Password confirmation", with: "123456789"
-    click_on "Update User"
+    click_on "Change password"
 
     assert_selector "h1", text: "Metrics"
     assert_text "Hello #{login_user}"
