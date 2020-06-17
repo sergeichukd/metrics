@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :ensure_password_changed!
+
   def new_password
     @user = current_user
   end
