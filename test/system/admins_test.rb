@@ -5,7 +5,6 @@ class AdminsTest < ApplicationSystemTestCase
     # Add user
     password_user = Faker::Number.number(digits: 10)    
     user = User.create(
-      email: Faker::Internet.unique.email,
       password: password_user,
       password_confirmation: password_user,
       first_name: Faker::Name.first_name,
@@ -27,7 +26,6 @@ class AdminsTest < ApplicationSystemTestCase
     password_admin = Faker::Number.number(digits: 10)
     
     User.create(
-      email: Faker::Internet.unique.email,
       password: password_admin,
       password_confirmation: password_admin,
       first_name: Faker::Name.first_name,
@@ -76,7 +74,6 @@ class AdminsTest < ApplicationSystemTestCase
     counter = 5
     counter.times do |n|
       user = User.create(
-        email: Faker::Internet.unique.email,
         password: password_user,
         password_confirmation: password_user,
         first_name: Faker::Name.first_name,
@@ -99,7 +96,6 @@ class AdminsTest < ApplicationSystemTestCase
     password_admin = Faker::Number.number(digits: 10)
     
     User.create(
-      email: Faker::Internet.unique.email,
       password: password_admin,
       password_confirmation: password_admin,
       first_name: Faker::Name.first_name,
