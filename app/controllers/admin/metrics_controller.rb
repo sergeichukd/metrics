@@ -1,4 +1,4 @@
-class Admin::MetricsController < ApplicationController
+class Admin::MetricsController < Admin::BaseController
   def edit
     @metric = Metric.find(params[:id])
   end
