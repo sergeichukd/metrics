@@ -14,7 +14,6 @@ class ClientsTest < ApplicationSystemTestCase
     password_admin = Faker::Number.number(digits: 10)
     
     User.create(
-      email: Faker::Internet.unique.email,
       password: password_admin,
       password_confirmation: password_admin,
       first_name: Faker::Name.first_name,
@@ -40,7 +39,6 @@ class ClientsTest < ApplicationSystemTestCase
     last_name_user = Faker::Name.last_name
     login_user = Faker::DcComics.unique.hero
 
-    fill_in "Email", with: Faker::Internet.unique.email
     fill_in "First name", with: first_name_user
     fill_in "Last name", with: last_name_user
     fill_in "Login", with: login_user
@@ -75,7 +73,6 @@ class ClientsTest < ApplicationSystemTestCase
     password = Faker::Number.number(digits: 10)
     
     User.create(
-      email: Faker::Internet.unique.email,
       password: password,
       password_confirmation: password,
       first_name: Faker::Name.first_name,

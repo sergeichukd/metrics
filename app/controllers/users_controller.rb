@@ -11,8 +11,7 @@ class UsersController < ApplicationController
       @user.update(has_default_password: false)
       # Sign in the user by passing validation in case their password changed
       bypass_sign_in(@user)
-
-      redirect_to root_path
+      redirect_to_index
     else
       render :new_password
     end
@@ -22,5 +21,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  def redirect_to_index
+    if current_user.is_admin
+      redirect_to index_path
+    else
+      redirect_to root_path
+    end
   end
 end
