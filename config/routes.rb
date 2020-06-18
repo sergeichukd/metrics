@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
-  get 'users/new_password', to: 'users#new_password', as: 'new_password'
-  patch 'users/update_password', to: 'users#update_password', as: 'update_password'
+  get 'users/new_password', to: 'users/password#new_password', as: 'new_password'
+  patch 'users/update_password', to: 'users/password#update_password', as: 'update_password'
 
   resources :metrics
 

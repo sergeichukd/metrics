@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Users::PasswordController < ApplicationController
   skip_before_action :ensure_password_changed!
 
   def new_password
