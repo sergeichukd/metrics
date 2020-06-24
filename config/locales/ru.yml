@@ -1,0 +1,5 @@
+ru:
+  metrics:
+    error:
+      empty_fields: "Имеются незаполненные поля"
+      negative_value: "Показания должны быть неотрицательными"

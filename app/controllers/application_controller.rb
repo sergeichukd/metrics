@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :ensure_password_changed!
 
+  I18n.locale = :en
+
   private
 
   def ensure_password_changed!

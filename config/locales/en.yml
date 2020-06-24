@@ -30,4 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  metrics:
+    error:
+      empty_fields: "You have empty field(s)"
+      value_negative: "Metrics mustn't be negative"
+      value_decreased: "Current metrics is less then the last record; hot: %{hot}, cold: %{cold}"
+      have_actual_records: "You've already have actual records for current month"

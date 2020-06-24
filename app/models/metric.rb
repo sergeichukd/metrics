@@ -1,12 +1,12 @@
 class MetricValidator < ActiveModel::Validator
   def validate(record)
     if metric_nil? record
-      record.errors[:value] << 'You have empty field(s)'
+      record.errors[:value] << I18n.t('metrics.error.empty_fields')
       return
     end
 
     if metric_negative? record
-      record.errors[:value] << "Metrics mustn't be negative"
+      record.errors[:value] << I18n.t('metrics.error.value_negative')
     end
   end
 
@@ -29,12 +29,12 @@ class MetricClientValidator < ActiveModel::Validator
     end
 
     if not_actual_metric?
-      record.errors[:date] << "You've already have actual records for current month"
+      record.errors[:date] << I18n.t('metrics.error.have_actual_records')
       return
     end
 
     if metric_decreased?(record)
-      record.errors[:value] << "Current metrics is less then the last record; hot: #{@last_record.hot}, cold: #{@last_record.cold}"
+      record.errors[:value] << I18n.t('metrics.error.value_decreased', hot: @last_record.hot, cold: @last_record.cold)
     end
   end
 
