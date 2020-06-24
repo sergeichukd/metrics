@@ -60,6 +60,6 @@ class Metric < ApplicationRecord
 
   default_scope { order('created_at DESC') }
 
-  validates_with MetricValidator
-  validates_with MetricClientValidator, on: :client_context
+  # validates_with MetricValidator
+  # validates_with MetricClientValidator, on: :client_context
 end

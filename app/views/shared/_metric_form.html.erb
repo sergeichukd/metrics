@@ -1,10 +1,10 @@
-  <% if @metric.errors.any? %>
+  <% if flash[:metric_edit_error] %>
     <div id="error_explanation" class="alert alert-warning" role="alert">
-      <p><%= pluralize(@metric.errors.count, "error") %> occured:</p>
-
       <ul>
-        <% @metric.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+        <% flash[:metric_edit_error].each do |key, messages| %>
+          <% messages.each do |message| %>
+            <li><%= key %> : <%= message %></li>
+          <% end %>
         <% end %>
       </ul>
     </div>

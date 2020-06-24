@@ -31,6 +31,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # For user auth
 gem 'devise'
 
+# Validation
+gem 'dry-validation'
+
 # Generate fake data for tests
 gem 'faker'
 
